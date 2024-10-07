@@ -1,0 +1,9 @@
+<div class="mt-4 flex">
+    <input type="text" placeholder="Type a message..." 
+           [(ngModel)]="userMessage" 
+           class="w-full p-3 rounded-lg bg-gray-800 text-white outline-none" />
+    <button (click)="sendMessage()" 
+            class="ml-2 p-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+      Send
+    </button>
+</div>

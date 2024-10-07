@@ -1,0 +1,20 @@
+<!-- chat.component.html -->
+<div class="bg-gray-900 text-white p-6 h-screen flex flex-col justify-end">
+    <div class="space-y-4 overflow-y-auto">
+      <div *ngFor="let chat of chats">
+        <div [ngClass]="chat.sender === 'user' ? 'text-right' : 'text-left'">
+          <div class="inline-block rounded-lg p-3"
+               [ngClass]="chat.sender === 'user' 
+                          ? 'bg-blue-600 text-white' 
+                          : 'bg-gray-700 text-white'">
+            {{ chat.text }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-message></app-message>
+</div>
+
+<!-- to use when spartin ui lib is known-->
+<!-- <textarea hlmInput placeholder="Type your message here."></textarea> -->
+  
