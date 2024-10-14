@@ -33,6 +33,7 @@ base_dir = os.path.dirname(os.path.abspath(__file__))
 
 pdf_path = os.path.join(base_dir, '../../testasset/test.pdf')
 output_file_path = os.path.join(base_dir, 'extracted_text.txt')
+
 try:
     raw_text = extract_raw_text(pdf_path)
     if raw_text:

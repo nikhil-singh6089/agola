@@ -1,11 +1,12 @@
 import os
-
-from flask import Flask
-
+from flask_cors import CORS
+from flask import Flask , jsonify
+from graph.graph import get_neo4j_data
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+    CORS(app)
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'db.sqlite'),
@@ -28,5 +29,15 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
+    
+    @app.route('/api/graph-data', methods=['GET'])
+    def get_graph_data():
+        graph_data = get_neo4j_data()
+        return jsonify(graph_data)
 
     return app
+
+app = create_app()
+
+if __name__ == "__main__":
+    app.run(debug=True)
